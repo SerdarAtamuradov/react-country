@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import Header from "./components/Header";
+import TableView from "./components/TableView";
 
-const App:React.FC = ()=>{
+const App: React.FC = () => {
   return (
-    <> 
-      <h1>Hello</h1>
+    <>
+      <Header />
+      <TableView />
     </>
   );
-}
+};
 
 export default App;
