@@ -1,6 +1,7 @@
 import React from "react";
 import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
 import { Table } from "antd";
+import "./components.css";
 
 // initialize a GraphQL client
 const client = new ApolloClient({
@@ -19,6 +20,13 @@ interface ICountriesinfo extends IPlace {
   dataIndex?: string;
   record?(): string;
 }
+
+interface ICountry extends IPlace {
+  capital: string;
+  currency: string;
+  phone: string;
+}
+
 const LIST_COUNTRIES = gql`
   {
     countries {
@@ -61,7 +69,7 @@ const TableView: React.FC = () => {
     {
       title: "Languages",
       render: (record: ICountriesinfo) =>
-        record.languages.map((item) => item.name),
+        record.languages.map((item) => item.name).join(", "),
       key: "languages[0].code",
     },
     {
@@ -77,7 +85,11 @@ const TableView: React.FC = () => {
 
   return (
     <>
-      <Table<IPlace> columns={columns} dataSource={data.countries} />
+      <Table<ICountry>
+        columns={columns}
+        dataSource={data.countries}
+        className="table"
+      />
     </>
   );
 };

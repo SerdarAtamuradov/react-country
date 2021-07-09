@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <>
       <Header />
       <Row>
-        <Col xs={24} md={{ span: 12, offset: 6 }}>
+        <Col xs={24} sm={{ span: 16, offset: 4 }} md={{ span: 18, offset: 3 }}>
           <TableView />
         </Col>
       </Row>
