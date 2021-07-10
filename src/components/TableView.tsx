@@ -29,7 +29,7 @@ const LIST_COUNTRIES = gql`
 
 interface ICountry {
   name: string;
-  code: number;
+  code: string;
   capital: string;
 }
 
@@ -62,11 +62,13 @@ const TableView: React.FC = () => {
       title: "Code",
       dataIndex: "code",
       key: "code",
+      sorter: (a: ICountry, b: ICountry) => compareByAlph(a.code, b.code),
     },
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
+      sorter: (a: ICountry, b: ICountry) => compareByAlph(a.name, b.name),
     },
     {
       title: "Capital",
@@ -79,6 +81,34 @@ const TableView: React.FC = () => {
       render: (record: ICountriesinfo): string =>
         record.languages.map((item) => item.name).join(", "),
       key: "languages",
+      filters: [
+        {
+          text: "English",
+          value: "English",
+        },
+        {
+          text: "French",
+          value: "French",
+        },
+        {
+          text: "Spanish",
+          value: "Spanish",
+        },
+        {
+          text: "Arabic",
+          value: "Arabic",
+        },
+        {
+          text: "Portuguese",
+          value: "Portuguese",
+        },
+        {
+          text: "Russian",
+          value: "Russian",
+        },
+      ],
+      onFilter: (value: any, record: ICountriesinfo) =>
+        record.languages.map((item) => item.name).indexOf(value) === 0,
     },
     {
       title: "Continent",
