@@ -37,11 +37,11 @@ interface ICountriesinfo extends ICountry {
   languages: Array<ICountry>;
   continent: ICountry;
 }
-// dataIndex?: string;
-// record?(): string;
 
 const TableView: React.FC = () => {
-  const { data, loading, error } = useQuery(LIST_COUNTRIES, { client });
+  const { data, loading, error } = useQuery(LIST_COUNTRIES, {
+    client,
+  });
 
   if (loading || error) {
     return <p>{error ? error.message : "Loading..."}</p>;
@@ -57,8 +57,6 @@ const TableView: React.FC = () => {
     (item: ICountriesinfo) => ({ ...item, key: item.code })
   );
 
-  // console.log(data.countries);
-  // console.log(data_source);
   const columns = [
     {
       title: "Code",
@@ -80,12 +78,44 @@ const TableView: React.FC = () => {
       title: "Languages",
       render: (record: ICountriesinfo): string =>
         record.languages.map((item) => item.name).join(", "),
-      key: "languages[0].code",
+      key: "languages",
     },
     {
       title: "Continent",
       render: (record: ICountriesinfo): string => record.continent.name,
-      key: "continent.code",
+      key: "continent",
+      filters: [
+        {
+          text: "Europe",
+          value: "Europe",
+        },
+        {
+          text: "Asia",
+          value: "Asia",
+        },
+        {
+          text: "Africa",
+          value: "Africa",
+        },
+        {
+          text: "North America",
+          value: "North America",
+        },
+        {
+          text: "South America",
+          value: "South America",
+        },
+        {
+          text: "Oceania",
+          value: "Oceania",
+        },
+        {
+          text: "Antarctica",
+          value: "Antarctica",
+        },
+      ],
+      onFilter: (value: any, record: ICountriesinfo) =>
+        record.continent.name.indexOf(value) === 0,
     },
   ];
 
