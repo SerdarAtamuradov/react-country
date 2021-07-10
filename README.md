@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Table-View of Countries using React, TypeScript, AntDesign
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## You can see the result from: [React-Country](https://serdaratamuradov.github.io/react-country/).
 
 ## Available Scripts
 
