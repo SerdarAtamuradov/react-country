@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/components.css"],"names":[],"mappings":"AAAA,aACE,YAAa,CACb,sBAAuB,CACvB,kBACF,CACA,OACE,YACF","file":"main.37f6b27f.chunk.css","sourcesContent":[".header_page {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.table {\r\n  margin: 2em 0;\r\n}\r\n"]}
